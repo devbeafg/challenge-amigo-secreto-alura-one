@@ -1,6 +1,7 @@
 :root {
-    --color-primary: #4B69FD;
-    --color-secondary: #FFF9EB;
+    --color-primary: #323d96;
+    /*--color-primary: #18b3c4;*/
+    --color-secondary: #d7fafe;
     --color-tertiary: #C4C4C4;
     --color-button: #fe652b;
     --color-button-disable: #a62a81;
@@ -44,7 +45,6 @@ body {
 .input-section {
     flex: 60%;
     background-color: var(--color-secondary);
-    border: 1px solid #000;
     border-radius: 64px 64px 0 0;
     display: flex;
     flex-direction: column;
@@ -59,7 +59,7 @@ body {
     font-family: "Merriweather", serif;
     font-weight: 900;
     font-style: italic;
-    color: var(--color-white);
+    color: var(--color-secondary);
 }
 
 .section-title {
@@ -133,6 +133,15 @@ ul {
     font-family: "Inter", sans-serif;
     font-size: 18px;
     margin: 20px 0;
+    list-style: none;
+    /* Remove os marcadores padrão */
+    padding: 0;
+}
+
+li {
+    display: inline-block;
+    /* Exibe os itens em linha, permitindo estilos de bloco */
+    margin-right: 10px;
 }
 
 .result-list {
