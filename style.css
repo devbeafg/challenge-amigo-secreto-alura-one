@@ -3,6 +3,7 @@
     --color-secondary: #FFF9EB;
     --color-tertiary: #C4C4C4;
     --color-button: #fe652b;
+    --color-button-disable: #a62a81;
     --color-button-hover: #e55720;
     --color-text: #444444;
     --color-white: #FFFFFF;
@@ -151,6 +152,11 @@ ul {
     color: var(--color-white);
     background-color: var(--color-button);
     font-size: 16px;
+}
+
+.button-draw:disabled {
+    background-color: var(--color-button-disable);
+    cursor: not-allowed;
 }
 
 .button-draw img {
