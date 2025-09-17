@@ -1,14 +1,21 @@
 :root {
-    --color-primary: #323d96;
-    /*--color-primary: #18b3c4;*/
+    --color-primary: #18b3c4;
     --color-secondary: #d7fafe;
     --color-tertiary: #C4C4C4;
-    --color-button: #fe652b;
-    --color-button-disable: #a62a81;
+    --color-button: #f9ad01;
+    --color-button-add: #ed3058;
     --color-button-hover: #e55720;
     --color-text: #444444;
     --color-white: #FFFFFF;
-}
+    --color-pink: #ed3058;
+    --color-yellow: #f9ad01;
+    --color-turquoise: #01a7a7;
+    --color-dark-torquoise: #016366;
+    --color-light-blue: #d7fafe;
+    --color-dark-blue: #323d96;
+    --color-purple: #a62a81;
+}    
+
 
 /* Estilos gerais */
 * {
@@ -19,7 +26,7 @@
 
 body {
     height: 100vh;
-    background-color: var(--color-primary);
+    background-color: var(--color-dark-blue);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,22 +41,22 @@ body {
 
 /* Banner */
 .header-banner {
-    flex: 40%;
+    flex: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 40px 0 0;
+    padding: 2px 0 0;
 }
 
 /* Seção de entrada */
 .input-section {
-    flex: 60%;
-    background-color: var(--color-secondary);
-    border-radius: 64px 64px 0 0;
+    flex: 70%;
+    background-color: var(--color-light-blue);
+    border-radius: 50px 50px 0 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 10px;
     width: 100%;
 }
 
@@ -59,7 +66,7 @@ body {
     font-family: "Merriweather", serif;
     font-weight: 900;
     font-style: italic;
-    color: var(--color-secondary);
+    color: var(--color-light-blue);
 }
 
 .section-title {
@@ -76,21 +83,37 @@ body {
     display: flex;
     justify-content: center;
     width: 100%;
-    max-width: 600px;
-    margin-top: 20px;
+    max-width: 650px;
+    margin: 10px 0;
 }
 
 .input-name {
     width: 100%;
     padding: 10px;
-    border: 2px solid #000;
-    border-radius: 25px 0 0 25px;
     font-size: 16px;
+    border: 0 none;
+    border-top: 0.5px solid var(--color-primary);
+    border-left: 0.5px solid var(--color-primary);
+    border-bottom: 0.5px solid var(--color-primary);
+    border-radius: 5px 0 0 5px;
+}
+
+input:focus {
+    outline: none;
+    border: 2px solid var(--color-primary);
+    border-right: none;
+}
+input::selection{
+    outline: none;
+    border: 2px solid var(--color-primary);
+    border-right: none;
 }
 
 .button-container {
-    width: 300px;
-    justify-content: center;
+    width: 100%;
+    max-width: 650px;
+    display: flex;
+    justify-content: space-between;
 }
 
 /* Estilos de entrada de texto */
@@ -103,6 +126,7 @@ body {
     border-radius: 25px 0 0 25px;
     font-family: "Merriweather", serif;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    
 }
 
 /* Estilos de botão */
@@ -110,20 +134,21 @@ button {
     padding: 15px 30px;
     font-family: "Inter", sans-serif;
     font-size: 16px;
-    border: 2px solid #000;
-    border-radius: 25px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
     cursor: pointer;
+    border: none;
 }
 
 .button-add {
-    background-color: var(--color-tertiary);
-    color: var(--color-text);
-    border-radius: 0 25px 25px 0;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-radius: 0 5px 5px 0;
+    border: none;
 }
 
 .button-add:hover {
-    background-color: #a1a1a1;
+    background-color: var(--color-pink);
 }
 
 /* Listas */
@@ -132,10 +157,11 @@ ul {
     color: var(--color-text);
     font-family: "Inter", sans-serif;
     font-size: 18px;
-    margin: 20px 0;
+    margin: 10px 0;
     list-style: none;
     /* Remove os marcadores padrão */
     padding: 0;
+
 }
 
 li {
@@ -145,7 +171,7 @@ li {
 }
 
 .result-list {
-    margin-top: 15px;
+    margin: 10px 0;
     color: #05DF05;
     font-size: 22px;
     font-weight: bold;
@@ -156,22 +182,24 @@ li {
 .button-draw {
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 45%;
     padding: 10px 40px;
     color: var(--color-white);
-    background-color: var(--color-button);
+    background-color: var(--color-primary);
     font-size: 16px;
+    border-radius: 5px none;
 }
 
-.button-draw:disabled {
-    background-color: var(--color-button-disable);
+button:disabled {
+    background-color: #a1a1a1;
+    pointer-events: none;
     cursor: not-allowed;
 }
 
 .button-draw img {
-    margin-right: 40px;
+    margin-right: 10px;
 }
 
-.button-draw:hover {
+.button-draw:not(:disabled):hover {
     background-color: var(--color-button-hover);
 }
