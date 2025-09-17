@@ -28,13 +28,14 @@
                 <button class="button-add" id="adicionar" onclick="adicionarAmigo()" disabled>Adicionar</button>
             </div>
 
-            <p>Lista de amigos participantes :</p>
-            <ul id="listaAmigos" class="name-list" aria-labelledby="listaAmigos" role="list"></ul>
-            <p>Amigo sorteado:</p>
+            <h3 id="subtituloLista"></h3>
+            <ul id="listaAmigos" class="name-list" aria-labelledby="listaAmigos" role="list">
+            </ul>
+            <h3 id="subtituloSorteado"></h3>
             <ul id="resultado" class="result-list" aria-live="polite"></ul>
             
             <p id="mensagemSorteio"></p>
-            
+
             <div class="button-container">
                 <button class="button-draw" id="habilitarSorteio" onclick="sortearAmigo()"
                     aria-label="Sortear amigo secreto" disabled>

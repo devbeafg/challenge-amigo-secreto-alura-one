@@ -55,6 +55,7 @@ function listarAmigos() {
     }
     lista.appendChild(itemLista); // insere item no html
   });
+  subtituloLista.innerHTML = "Lista de amigos participantes:";
 }
 
 function habilitarSorteio() {
@@ -90,6 +91,7 @@ function sortearAmigo() {
   }
   itemLista += "</ul>";
 
+  subtituloSorteado.innerHTML = "Amigos sorteados:";
   mensagem.innerHTML = "Não há mais participantes para sortear!";
   habilitarOrNot.setAttribute('disabled', true); // desativa botao sorteio
   amigo.setAttribute('disabled', true); // desativa input
