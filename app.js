@@ -23,7 +23,7 @@ function limparInput() {
 
 function adicionarAmigo() {
   let nome = amigo.value.trim(); // recebe o nome no input ignorando espaço
-  const regex = /^[a-zA-Z\s]+$/; // seleção de caracteres permitidos para o input
+  const regex = /^[a-zA-ZáàâãéèêíóòôõúùûüçÇ\s]+$/; // seleção de caracteres permitidos para o input
 
   if (nome === "") { // verificação de input vazio
     alert("Ops! Este campo não pode ser vazio!");
@@ -45,17 +45,13 @@ function listarAmigos() {
   let lista = document.getElementById("listaAmigos");
   lista.innerHTML = ""; // limpa o que houver na lista
 
-  // pega nome no vetor, cria um item para a lista e insere nome na lista
-  participantes.forEach((nome, i) => {
+  // Pega nome no vetor, cria um item para a lista (<li>) e coloca o nome
+  participantes.forEach(nome => {
     let itemLista = document.createElement("li");
     itemLista.textContent = nome;
-    // adiciona "|" se não for o último nome para apresentar o <li> um ao lado do outro (continua no css)
-    if (i < participantes.length - 1) {
-      itemLista.textContent += " |";
-    }
-    lista.appendChild(itemLista); // insere item no html
+    lista.appendChild(itemLista); // insere o nome no html
   });
-  subtituloLista.innerHTML = "Lista de amigos participantes:";
+  subtituloLista.innerHTML = "Amigos participantes:";
 }
 
 function habilitarSorteio() {
@@ -84,12 +80,12 @@ function sortearAmigo() {
     }
   }
 
-  let itemLista = "<ul>"; // cria lista para resultado
+  resultado.innerHTML = ""; // limpa lista de resultado
   for (let i = 0; i < participantes.length; i++) {
-    itemLista += `<li>${participantes[i]} presenteia ${sorteio[i]}</li><br/>`; // cria item para lista com sorteio
-    resultado.innerHTML = itemLista; // apresenta resultado no html
+    let itemLista = document.createElement("li"); // cria item
+    itemLista.textContent = `• ${participantes[i]} presenteia ${sorteio[i]}`; // une nomes do sorteio
+    resultado.appendChild(itemLista); //insere item
   }
-  itemLista += "</ul>";
 
   subtituloSorteado.innerHTML = "Amigos sorteados:";
   mensagem.innerHTML = "Não há mais participantes para sortear!";
@@ -107,6 +103,8 @@ function recomecarSorteio() {
   mensagem.innerHTML = "Sorteio somente a partir de 3 participantes";
   adicionar.removeAttribute('disabled'); // ativa botão adocionar
   amigo.removeAttribute('disabled'); // ativa input
+  subtituloLista.innerHTML = ""; // limpa subtitulos
+  subtituloSorteado.innerHTML = ""; // limpa subtitulos
   manterFoco();
   limparInput();
 }
