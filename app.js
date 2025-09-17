@@ -2,16 +2,27 @@
 console.log("hello");
 let participantes = []; // criação do vetor
 
+// espaço para todos os meus botões e elementos
+let amigo = document.getElementById("amigo"); // input
+let adicionar = document.getElementById("adicionar"); // botão do input
+let listaAmigos = document.getElementById("listaAmigos"); // ul para listar amigos
+let resultado = document.getElementById("resultado"); // ul para listar sorteados
+let mensagem = document.getElementById("mensagemSorteio"); // mensagens durante sorteio
+let habilitarOrNot = document.getElementById("habilitarSorteio"); // botão do sortear
+let recomecar = document.getElementById("recomecar"); // botão do recomeçar
+
+adicionar.removeAttribute('disabled'); // inicia com botão input ativo 
+
 function manterFoco() { // função para manter o foco no input ativo
-  document.getElementById("amigo").focus();
+  amigo.focus();
 }
 
 function limparInput() {
-  document.getElementById("amigo").value = ""; // limpa input
+  amigo.value = ""; // limpa input
 }
 
 function adicionarAmigo() {
-  let nome = document.getElementById("amigo").value.trim(); // recebe o nome no input
+  let nome = amigo.value.trim(); // recebe o nome no input ignorando espaço
   const regex = /^[a-zA-Z\s]+$/; // seleção de caracteres permitidos para o input
 
   if (nome === "") { // verificação de input vazio
@@ -19,10 +30,10 @@ function adicionarAmigo() {
   } else if (participantes.includes(nome)) { // verificação de nome duplicado
     alert("Ei! Esse nome já foi adicionado!");
   } else if (!regex.test(nome)) { // verifica caracteres não permitidos
-    alert('Apenas letras e espaços são permitidos.');
+    alert('Lamento! Aceito apenas letras e espaços.');
   } else {
     participantes.push(nome); // insere nome no vetor
-    document.getElementById("recomecar").removeAttribute('disabled'); // habilita botão de recomeçar
+    recomecar.removeAttribute('disabled'); // habilita botão de recomeçar
     listarAmigos();
   }
   manterFoco();
@@ -48,37 +59,52 @@ function listarAmigos() {
 
 function habilitarSorteio() {
   if (participantes.length < 3) { // verifica se há mais de 3 participantes
-    document.getElementById("mensagemSorteio").innerHTML = "Sorteio somente a partir de 3 participantes";
+    mensagem.innerHTML = "Sorteio somente a partir de 3 participantes";
   } else {
-    document.getElementById("mensagemSorteio").innerHTML = "";
-    document.getElementById("habilitarSorteio").removeAttribute('disabled'); // ativa botão sorteio
+    mensagem.innerHTML = "";
+    habilitarOrNot.removeAttribute('disabled'); // ativa botão sorteio
   }
 }
 habilitarSorteio();
 
 function sortearAmigo() {
-  if (participantes.length === 0) { // verifica se o vetor está vazio
-    document.getElementById("sorteado").innerHTML = "Não há participantes para sortear!";
-    document.getElementById("habilitarSorteio").setAttribute('disabled', true); // desativa botão sorteio 
-    return;
-  } else {
-    let indice = Math.floor(Math.random() * participantes.length); // sorteia índice aleatório
-    let escolhido = participantes[indice]; // pega o nome sorteado
-    document.getElementById("sorteado").innerHTML = escolhido; // mostra na tela
-    participantes.splice(indice, 1); // remove o nome sorteado do vetor
-    listarAmigos();
-    manterFoco();
+  let sorteio = [...participantes]; // copia vetor
+
+  for (let i = 0; i < sorteio.length; i++) {
+    let posicao = Math.floor(Math.random() * sorteio.length); // escolhe nome aleatório
+    let troca = sorteio[i];
+    sorteio[i] = sorteio[posicao];
+    sorteio[posicao] = troca;
   }
+
+  for (let i = 0; i < participantes.length; i++) { // verifica se um participante tirou ele mesmo
+    if (participantes[i] === sorteio[i]) {
+      return sortearAmigo();
+    }
+  }
+
+  let itemLista = "<ul>"; // cria lista para resultado
+  for (let i = 0; i < participantes.length; i++) {
+    itemLista += `<li>${participantes[i]} presenteia ${sorteio[i]}</li><br/>`; // cria item para lista com sorteio
+    resultado.innerHTML = itemLista; // apresenta resultado no html
+  }
+  itemLista += "</ul>";
+
+  mensagem.innerHTML = "Não há mais participantes para sortear!";
+  habilitarOrNot.setAttribute('disabled', true); // desativa botao sorteio
+  amigo.setAttribute('disabled', true); // desativa input
+  adicionar.setAttribute('disabled', true); // desativa botão adicionar nome
 }
-
-
 
 function recomecarSorteio() {
   participantes = []; // limpa o vetor
-  document.getElementById("listaAmigos").innerHTML = ""; // limpa os nomes dos amigos
-  document.getElementById("sorteado").innerHTML = ""; // limpa o nome do sorteado
-  document.getElementById("recomecar").setAttribute('disabled', true); // desativa botão de recomecar sorteio
-  document.getElementById("habilitarSorteio").setAttribute('disabled', true); // desativa botão sorteio
+  listaAmigos.innerHTML = ""; // limpa os nomes dos amigos
+  resultado.innerHTML = ""; // limpa os nomes dos sorteados
+  recomecar.setAttribute('disabled', true); // desativa botão de recomecar sorteio
+  habilitarOrNot.setAttribute('disabled', true); // desativa botão sorteio
+  mensagem.innerHTML = "Sorteio somente a partir de 3 participantes";
+  adicionar.removeAttribute('disabled'); // ativa botão adocionar
+  amigo.removeAttribute('disabled'); // ativa input
   manterFoco();
   limparInput();
 }
