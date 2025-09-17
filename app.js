@@ -51,7 +51,6 @@ function listarAmigos() {
     itemLista.textContent = nome;
     lista.appendChild(itemLista); // insere o nome no html
   });
-  subtituloLista.innerHTML = "Amigos participantes:";
 }
 
 function habilitarSorteio() {
@@ -87,7 +86,6 @@ function sortearAmigo() {
     resultado.appendChild(itemLista); //insere item
   }
 
-  subtituloSorteado.innerHTML = "Amigos sorteados:";
   mensagem.innerHTML = "Não há mais participantes para sortear!";
   habilitarOrNot.setAttribute('disabled', true); // desativa botao sorteio
   amigo.setAttribute('disabled', true); // desativa input
@@ -103,8 +101,6 @@ function recomecarSorteio() {
   mensagem.innerHTML = "Sorteio somente a partir de 3 participantes";
   adicionar.removeAttribute('disabled'); // ativa botão adocionar
   amigo.removeAttribute('disabled'); // ativa input
-  subtituloLista.innerHTML = ""; // limpa subtitulos
-  subtituloSorteado.innerHTML = ""; // limpa subtitulos
   manterFoco();
   limparInput();
 }

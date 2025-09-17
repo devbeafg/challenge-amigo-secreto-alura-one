@@ -118,7 +118,7 @@ input::selection{
     max-width: 600px;
     display: flex;
     justify-content: space-between;
-    
+    margin: 10px 0;
 }
 
 /* Estilos de entrada de texto */
@@ -143,11 +143,12 @@ button {
     border-radius: 5px;
     cursor: pointer;
     border: none;
+    text-align: center;
 }
 
 .button-add {
     background-color: var(--color-primary);
-    color: var(--color-white);
+    color: var(--color-secondary);
     border-radius: 0 5px 5px 0;
     border: none;
 }
@@ -193,11 +194,10 @@ ul {
     align-items: center;
     width: 45%;
     padding: 10px 40px;
-    color: var(--color-white);
+    color: var(--color-secondary);
     background-color: var(--color-primary);
     font-size: 16px;
     border-radius: 5px none;
-    margin: 10px;
 }
 
 button:disabled {
@@ -211,11 +211,11 @@ button:disabled {
 }
 
 .button-draw:not(:disabled):hover {
-    background-color: var(--color-yellow);
+    background-color: var(--color-pink);
 }
 
 .btnSorteio:not(:disabled):hover {
-    background-color: var(--color-dark-torquoise);
+    background-color: var(--color-pink);
 }
 
 #mensagemSorteio{
