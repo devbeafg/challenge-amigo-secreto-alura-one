@@ -82,7 +82,7 @@ body {
     justify-content: center;
     width: 100%;
     max-width: 600px;
-    margin: 10px 0;
+    margin: 15px 0;
 }
 
 .input-name {
@@ -114,7 +114,7 @@ input::selection {
     max-width: 600px;
     display: flex;
     justify-content: space-between;
-    margin: 10px 0;
+    margin: 10px 0 30px 0;
 }
 
 /* Estilos de entrada de texto */
@@ -161,7 +161,8 @@ button {
     border-radius: 5px;
     width: 100%;
     max-width: 600px;
-    margin: 5px;
+    margin: 10px;
+    padding: 10px;
 }
 
 .listas {
@@ -216,6 +217,7 @@ button:disabled {
 
 #mensagemSorteio {
     color: var(--color-turquoise);
+    margin-top: 10px;
 }
 
 #subtituloLista,
