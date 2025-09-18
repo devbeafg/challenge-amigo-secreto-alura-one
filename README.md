@@ -10,8 +10,7 @@ Essa aplicação web foi criada para simular o famoso sorteio de amigo secreto d
 ---
 
 ## ★ Deploy
-* **Vercel:** [Título](Link)
-* **GitHub Pages:** [Título](Link)
+* **Vercel:** [Amigo Secreto](https://amigo-secreto-omega-ten.vercel.app/)
 
 ---
 
